@@ -1,0 +1,39 @@
+
+version: '2'
+
+services:
+  hicetnunc-api:
+    build: https://github.com/hicetnunc2000/hicetnunc-api.git
+    ports:
+      - 3001:3001
+    restart: always
+    network_mode: host
+    
+  hicetnunc-api-py:
+    build: https://github.com/hicetnunc2000/hicetnunc-api-py.git
+    ports:
+      - 5000:5000
+    restart: always
+    network_mode: host
+
+  hesychasm:
+    build: https://github.com/hicetnunc2000/hesychasm.git
+    ports:
+      - 5001:5001
+    restart: always
+    network_mode: host
+    
+  hicetnunc-ui:
+    build: https://github.com/hicetnunc2000/hicetnunc.git
+    ports:
+      - 3000:3000
+    restart: always
+    tty: true
+    depends_on:
+      - hicetnunc-api
+      - hicetnunc-api-py
+      - hesychasm
+    links:
+      - hicetnunc-api
+      - hicetnunc-api-py
+      - hesychasm
