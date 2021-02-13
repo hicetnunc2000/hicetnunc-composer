@@ -1,7 +1,7 @@
 
 # hicetnunc-composer
 
-the present directory build the dApp microservice architecture as a development env
+the present directory builds the dApp microservice architecture for a development env
 ```
 docker-compose up --build
 ```
